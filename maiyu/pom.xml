@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <modules>
+        <module>maiyu-web</module>
+        <module>maiyu-dal</module>
+        <module>maiyu-core</module>
+        <module>maiyu-domain</module>
+        <module>maiyu-starter</module>
+        <module>maiyu-gateway</module>
+    </modules>
+
+    <parent>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <version>2.1.9.RELEASE</version>
+    </parent>
+
+    <groupId>com.ldh.edu</groupId>
+    <artifactId>maiyu</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <name>web-maiyu</name>
+    <description>服务：商城管理系统</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <spring-boot-version>2.1.9.RELEASE</spring-boot-version>
+        <spring-cloud-version>2.1.3.RELEASE</spring-cloud-version>
+        <mybatis-spring-boot-version>1.3.2</mybatis-spring-boot-version>
+        <swagger-version>2.9.2</swagger-version>
+        <testng-version>6.14.3</testng-version>
+        <maria-version>2.4.0</maria-version>
+        <lombok-version>1.18.2</lombok-version>
+        <druid-version>1.1.10</druid-version>
+        <auth-version>0.1.10</auth-version>
+        <mapping-version>1.0.5-ALPHA</mapping-version>
+        <flow-version>0.2.5</flow-version>
+
+
+        <maiyu-core-version>1.0.0</maiyu-core-version>
+        <maiyu-dal-version>1.0.0</maiyu-dal-version>
+        <maiyu-web-version>1.0.0</maiyu-web-version>
+        <maiyu-domain-version>1.0.0</maiyu-domain-version>
+        <maiyu-starter-version>1.0.0</maiyu-starter-version>
+
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>com.ldh.edu</groupId>
+                <artifactId>maiyu-web</artifactId>
+                <version>${maiyu-web-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ldh.edu</groupId>
+                <artifactId>maiyu-dal</artifactId>
+                <version>${maiyu-dal-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ldh.edu</groupId>
+                <artifactId>maiyu-core</artifactId>
+                <version>${maiyu-core-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ldh.edu</groupId>
+                <artifactId>maiyu-domain</artifactId>
+                <version>${maiyu-domain-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ldh.edu</groupId>
+                <artifactId>maiyu-starter</artifactId>
+                <version>${maiyu-starter-version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${spring-boot-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis-spring-boot-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+                <version>${spring-cloud-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>${spring-cloud-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring-boot-version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-gateway</artifactId>
+                <version>${spring-cloud-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>${testng-version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ch.vorburger.mariaDB4j</groupId>
+                <artifactId>mariaDB4j</artifactId>
+                <version>${maria-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cc.eamon.open</groupId>
+                <artifactId>mapping</artifactId>
+                <version>${mapping-version}</version>
+            </dependency>
+
+            <!--<dependency>
+                <groupId>cc.eamon.open</groupId>
+                <artifactId>auth</artifactId>
+                <version>${auth-version}</version>
+            </dependency>-->
+
+<!--            <dependency>-->
+<!--                <groupId>cc.eamon.open</groupId>-->
+<!--                <artifactId>flow-spring-boot-starter</artifactId>-->
+<!--                <version>${flow-version}</version>-->
+<!--            </dependency>-->
+
+        </dependencies>
+    </dependencyManagement>
+
+
+</project>

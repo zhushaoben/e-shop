@@ -1,0 +1,3 @@
+com\ldh\edu\maiyu\config\SwaggerConfig.class
+com\ldh\edu\maiyu\config\RedisConfig.class
+com\ldh\edu\maiyu\AppStarter.class

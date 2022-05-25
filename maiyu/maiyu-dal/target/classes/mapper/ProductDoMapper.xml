@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ldh.edu.maiyu.sys.datainterface.ProductDoMapper">
+  <resultMap id="BaseResultMap" type="com.ldh.edu.maiyu.sys.dataobject.ProductDo">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="busman_id" jdbcType="VARCHAR" property="busmanId" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="stock" jdbcType="INTEGER" property="stock" />
+    <result column="sell" jdbcType="INTEGER" property="sell" />
+    <result column="img_path" jdbcType="VARCHAR" property="imgPath" />
+    <result column="details" jdbcType="VARCHAR" property="details" />
+    <result column="gmt_update" jdbcType="TIMESTAMP" property="gmtUpdate" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, busman_id, price, name, stock, sell, img_path, details, gmt_update, gmt_create
+  </sql>
+  <select id="selectByExample" parameterType="com.ldh.edu.maiyu.sys.dataobject.ProductDoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sys_product
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_product
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sys_product
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ldh.edu.maiyu.sys.dataobject.ProductDoExample">
+    delete from sys_product
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ldh.edu.maiyu.sys.dataobject.ProductDo">
+    insert into sys_product (id, busman_id, price, 
+      name, stock, sell, 
+      img_path, details, gmt_update, 
+      gmt_create)
+    values (#{id,jdbcType=VARCHAR}, #{busmanId,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
+      #{name,jdbcType=VARCHAR}, #{stock,jdbcType=INTEGER}, #{sell,jdbcType=INTEGER}, 
+      #{imgPath,jdbcType=VARCHAR}, #{details,jdbcType=VARCHAR}, #{gmtUpdate,jdbcType=TIMESTAMP}, 
+      #{gmtCreate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ldh.edu.maiyu.sys.dataobject.ProductDo">
+    insert into sys_product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="busmanId != null">
+        busman_id,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="stock != null">
+        stock,
+      </if>
+      <if test="sell != null">
+        sell,
+      </if>
+      <if test="imgPath != null">
+        img_path,
+      </if>
+      <if test="details != null">
+        details,
+      </if>
+      <if test="gmtUpdate != null">
+        gmt_update,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="busmanId != null">
+        #{busmanId,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="stock != null">
+        #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="sell != null">
+        #{sell,jdbcType=INTEGER},
+      </if>
+      <if test="imgPath != null">
+        #{imgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="details != null">
+        #{details,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtUpdate != null">
+        #{gmtUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ldh.edu.maiyu.sys.dataobject.ProductDoExample" resultType="java.lang.Long">
+    select count(*) from sys_product
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update sys_product
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.busmanId != null">
+        busman_id = #{record.busmanId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null">
+        price = #{record.price,jdbcType=DECIMAL},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stock != null">
+        stock = #{record.stock,jdbcType=INTEGER},
+      </if>
+      <if test="record.sell != null">
+        sell = #{record.sell,jdbcType=INTEGER},
+      </if>
+      <if test="record.imgPath != null">
+        img_path = #{record.imgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.details != null">
+        details = #{record.details,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gmtUpdate != null">
+        gmt_update = #{record.gmtUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.gmtCreate != null">
+        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update sys_product
+    set id = #{record.id,jdbcType=VARCHAR},
+      busman_id = #{record.busmanId,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=DECIMAL},
+      name = #{record.name,jdbcType=VARCHAR},
+      stock = #{record.stock,jdbcType=INTEGER},
+      sell = #{record.sell,jdbcType=INTEGER},
+      img_path = #{record.imgPath,jdbcType=VARCHAR},
+      details = #{record.details,jdbcType=VARCHAR},
+      gmt_update = #{record.gmtUpdate,jdbcType=TIMESTAMP},
+      gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ldh.edu.maiyu.sys.dataobject.ProductDo">
+    update sys_product
+    <set>
+      <if test="busmanId != null">
+        busman_id = #{busmanId,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="stock != null">
+        stock = #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="sell != null">
+        sell = #{sell,jdbcType=INTEGER},
+      </if>
+      <if test="imgPath != null">
+        img_path = #{imgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="details != null">
+        details = #{details,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtUpdate != null">
+        gmt_update = #{gmtUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ldh.edu.maiyu.sys.dataobject.ProductDo">
+    update sys_product
+    set busman_id = #{busmanId,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      name = #{name,jdbcType=VARCHAR},
+      stock = #{stock,jdbcType=INTEGER},
+      sell = #{sell,jdbcType=INTEGER},
+      img_path = #{imgPath,jdbcType=VARCHAR},
+      details = #{details,jdbcType=VARCHAR},
+      gmt_update = #{gmtUpdate,jdbcType=TIMESTAMP},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

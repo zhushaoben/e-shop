@@ -1,0 +1,67 @@
+server:
+  port: 8080
+
+spring:
+  cache:
+    ehcache:
+      config: classpath:ehcache/ehcache-spring.xml
+  redis:
+    jedis:
+      pool:
+        max-active: 10
+        max-idle: 10
+        max-wait: -1
+    database: 0
+    host: 47.95.192.148
+    port: 6379
+    timeout: 1000
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #    url: jdbc:mysql://dev.database.horsecoder.com:43795/mlcdbx?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://47.95.192.148:3307/objectwork?serverTimezone=UTC
+    username: root
+    password: 123456
+    druid:
+      driver-class-name: ${spring.datasource.driver-class-name}
+      url: ${spring.datasource.url}
+      username: ${spring.datasource.username}
+      password: ${spring.datasource.password}
+      initial-size: 2
+      max-active: 10
+      min-idle: 2
+      max-wait: 60000
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: 200
+      min-evictable-idle-time-millis: 300000
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+#    schema:
+#      - classpath:sys_class_manage.sql
+#      - classpath:sys_class_split_manage.sql
+#      - classpath:sys_exam_room_manage.sql
+#      - classpath:sys_grade_manage.sql
+#      - classpath:sys_major_manage.sql
+#      - classpath:sys_province_enroll_manage.sql
+#      - classpath:sys_school_manage.sql
+#      - classpath:sys_student_sign.sql
+    initialization-mode: never
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+
+eureka:
+  client:
+    service-url:
+      #      defaultZone: http://dev.center.horsecoder.com:37073/eureka
+      defaultZone: http://47.95.192.148:7001/eureka
+    fetch-registry: true
+    registry-fetch-interval-seconds: 8
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 4
+    lease-expiration-duration-in-seconds: 12
+    status-page-url-path: /info
+    health-check-url-path: /health
