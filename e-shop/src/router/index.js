@@ -17,7 +17,7 @@ import DetailDisplay from "@/components/usermanage/DetailDisplay";
 import Cart from "@/components/usermanage/Cart";
 import Order from "@/components/usermanage/Order";
 import BusinessGood from "@/components/business/BusinessGood";
-
+import BusinessOrder from "@/components/business/BusinessOrder";
 
 Vue.use(VueRouter)
 
@@ -58,6 +58,11 @@ const routes = [
                 path:'/mygood',
                 name:'mygood',
                 component: BusinessGood
+            },
+            {
+                path:'/myorder',
+                name:'myorder',
+                component: BusinessOrder
             }
 
         ]

@@ -12,7 +12,7 @@
                 <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
                     <el-menu @select="menuClick" >
                         <el-menu-item index="/mygood">商品管理</el-menu-item>
-                        <el-menu-item index="/mygood">订单管理</el-menu-item>
+                        <el-menu-item index="/myorder">订单管理</el-menu-item>
                     </el-menu>
                 </el-aside>
                 <el-main>
